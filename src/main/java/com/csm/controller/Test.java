@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 
 public class Test {
 	public static void main(String[] args) {
+		//http://www.imooc.com/video/10082
 		 Connection con;
 	        //驱动程序名
 	        String driver = "com.mysql.jdbc.Driver";
