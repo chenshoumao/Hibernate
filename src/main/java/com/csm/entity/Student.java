@@ -1,58 +1,44 @@
 package com.csm.entity;
 
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.GenericGenerator;
-
 @Entity
-@Table(name = "Student")
-public class Student { 
-	
-//	@Id
-//	@GeneratedValue
-//	@Column(name = "id")
-//	private int pk;
-	@Id
-	@GeneratedValue(generator = "sid")
-	@GenericGenerator(name="sid",strategy="assigned")
-	@Column(length=8) 
-	private String pk;
-	
-	
+@Table(name = "student")
+public class Student {
+
+	private int id;
 	private String name;
-	private String address;
+	private String card;
+
+	@Id
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID", unique = true, nullable = false)
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	@Column(name = "NAME", nullable = false, length = 50)
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getAddress() {
-		return address;
+
+	@Column(name = "CARD", nullable = false, length = 50)
+	public String getCard() {
+		return card;
 	}
-	public void setAddress(String address) {
-		this.address = address;
+
+	public void setCard(String card) {
+		this.card = card;
 	}
-	public String getPk() {
-		return pk;
-	}
-	public void setPk(String pk) {
-		this.pk = pk;
-	}
-	public Student(String pk,String name, String address) {
-		super();
-		this.pk = pk;
-		this.name = name;
-		this.address = address;
-		
-	}
-	
-	public Student(){};
-	
-	
 }

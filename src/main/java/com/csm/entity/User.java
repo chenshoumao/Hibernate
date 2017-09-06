@@ -1,31 +1,21 @@
 package com.csm.entity;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
 @Entity
-@Table(name = "User")
-public class User{
-	
-	@Id
-	@GeneratedValue
-	@Column(name = "id")
-	private int id; 
+@Table(name = "t_user")
+public class User {
+
+	private int id;
 	private String name;
-	private User2 user;
+	private String sex;
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
+	@Id
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID", unique = true, nullable = false)
 	public int getId() {
 		return id;
 	}
@@ -34,19 +24,21 @@ public class User{
 		this.id = id;
 	}
 
-	public User2 getUser() {
-		return user;
+	@Column(name = "NAME", nullable = false, length = 50)
+	public String getName() {
+		return name;
 	}
 
-	public void setUser(User2 user) {
-		this.user = user;
-	}
-
-	public User(){}
-	public User(int id, String name, User2 user) {
-		super();
-		this.id = id;
+	public void setName(String name) {
 		this.name = name;
-		this.user = user;
+	}
+
+	@Column(name = "SEX", nullable = false, length = 2)
+	public String getSex() {
+		return sex;
+	}
+
+	public void setSex(String sex) {
+		this.sex = sex;
 	}
 }
